@@ -1,10 +1,10 @@
 from fastapi import FastAPI, BackgroundTasks, HTTPException, Header, UploadFile, File
 
 from models import DPModelSelect, EXPORT_TYPES
-from config import Settings
+import config
 
 app = FastAPI()
-runtime_args = Settings()
+runtime_args = config.get_settings()
 
 # select the model specified by the config
 app.model = DPModelSelect[runtime_args.method](

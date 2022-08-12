@@ -189,7 +189,11 @@ class SDModel(ABC):
 
         elif format == "json":
             # JSON creation
-            self.sample(num_samples).to_json(stream, index = False)
+            try:
+                self.sample(num_samples).to_json(stream)
+            except Exception as err:
+                print(err)
+                raise ValueError(f"Could not export data to json. Please check your data.", 500)
             response = StreamingResponse(
                 iter([stream.getvalue()]),
                 media_type="application/json"

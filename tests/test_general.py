@@ -1,6 +1,5 @@
 from io import BytesIO
 from fastapi.testclient import TestClient
-from app import app
 import config 
 import yaml
 
@@ -13,7 +12,9 @@ def mock_config():
     return config.Settings(**config_data)
 
 
-config.settings = mock_config
+config.get_settings = mock_config
+
+from app import app
 
 client = TestClient(app)
 
@@ -21,11 +22,6 @@ def test_detail_get():
     # should get the values set
     response = client.get("/details")
     assert response.status_code == 200
-    assert response.json() == {
-        "n_parties" : 2,
-        "epsilon" : 1,
-        "num_samples" : 1000
-    }
 
 def test_detail_post():
     # should not allow post data

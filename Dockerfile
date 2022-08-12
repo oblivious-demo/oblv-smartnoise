@@ -23,5 +23,7 @@ COPY ./tests/ /code/tests/
 cmd ["python", "-m", "pytest", "tests/"]
 
 FROM synth_data
+
+COPY ./tests/yaml/runtime_mwem_1.yaml /usr/runtime.yaml
 # run as local server
 CMD ["python", "uvicorn_serve.py"]
