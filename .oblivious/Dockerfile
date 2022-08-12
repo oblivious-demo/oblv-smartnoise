@@ -7,6 +7,10 @@ COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
+#Install Git for cloning the repo
+RUN apt update
+RUN apt install -y git
+
 # Install MBI for MST SD model
 RUN git clone https://github.com/ryan112358/private-pgm.git
 RUN cd private-pgm && python -m pip install .
