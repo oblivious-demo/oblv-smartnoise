@@ -1,0 +1,5 @@
+method: MWEM
+epsilon: 3
+party_names:
+  - Alice
+  - Bob

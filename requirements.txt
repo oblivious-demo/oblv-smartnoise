@@ -1,0 +1,10 @@
+fastapi>=0.68.0,<0.69.0
+pydantic>=1.8.0,<2.0.0
+uvicorn>=0.15.0,<0.16.0
+python-multipart==0.0.5
+numpy==1.21.2
+pytest==7.0.1
+xlsxwriter==3.0.3
+diffprivlib
+PyYAML==6.0
+smartnoise-synth==0.2.7

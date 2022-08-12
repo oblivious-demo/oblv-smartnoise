@@ -1,0 +1,5 @@
+method: DPCTGAN
+epsilon: 3
+party_names:
+  - Alice
+  - Bob

@@ -1,0 +1,5 @@
+method: MTS
+epsilon: 3
+party_names:
+  - Alice
+  - Bob

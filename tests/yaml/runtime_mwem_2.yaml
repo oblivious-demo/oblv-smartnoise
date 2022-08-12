@@ -1,0 +1,9 @@
+# Example w/ params
+method: MWEM
+epsilon: 1
+params:
+  iterations: 60
+  q_count: 500
+party_names:
+  - Alice
+  - Bob
