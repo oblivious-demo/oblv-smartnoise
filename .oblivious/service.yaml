@@ -1,43 +1,43 @@
 auth:
 - auth_name: default
   auth_type: signed_headers
-roles:
-- role_auth: default
-  role_name: multirole
-  role_description: Multirole Users - can access all endpoints
-  role_cardinality: 2
-paths:
-- path: "/upload_data"
-  access: multirole
-  short_description: data for training synthetic data generation model
-- path: "/confirm_data"
-  access: multirole
-  short_description: to confirm status of data upload
-- path: "/formats"
-  access: multirole
-  short_description: to get available file formats for download
-- path: "/samples"
-  access: multirole
-  short_description: generate sample data from trained synthetic data model
-- path: "/columns"
-  access: multirole
-  short_description: get the columns of the data
-- path: "/details"
-  access: multirole
-  short_description: get the details like model, epsilon, and party names
-- path: "/model_status"
-  access: multirole
-  short_description: model status [ awaiting data, training, trained ]
-traffic:
-  inbound:
-  - type: tcp
-    port: 80
-    name: main_io
-  outbound: []
+base_image: oblv_ubuntu_18_04_proxy_python_3_8
 meta:
   author: Oblivious Software
   author_email: support@oblivious.ai
+  docs: readme.md
   git: https://github.com/oblivious-demo/oblv-smartnoise.git
   version: 0.0.1
-  docs: https://github.com/oblivious-demo
-base_image: oblv_ubuntu_18_04_proxy_python_3_8
+paths:
+- access: multirole
+  path: /upload_data
+  short_description: data for training synthetic data generation model
+- access: multirole
+  path: /confirm_data
+  short_description: to confirm status of data upload
+- access: multirole
+  path: /formats
+  short_description: to get available file formats for download
+- access: multirole
+  path: /samples
+  short_description: generate sample data from trained synthetic data model
+- access: multirole
+  path: /columns
+  short_description: get the columns of the data
+- access: multirole
+  path: /details
+  short_description: get the details like model, epsilon, and party names
+- access: multirole
+  path: /model_status
+  short_description: model status [ awaiting data, training, trained ]
+roles:
+- role_auth: default
+  role_cardinality: 2
+  role_description: Multirole Users - can access all endpoints
+  role_name: multirole
+traffic:
+  inbound:
+  - name: main_io
+    port: 80
+    type: tcp
+  outbound: []
